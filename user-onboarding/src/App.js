@@ -9,24 +9,31 @@ import logo from './logo.svg';
 import Form from './Components/Form';
 
 
-const initialFormErrors = {
-  username: '',
-  password: '',
-  email: '',
-  tos: '',
-}
 
-const initialFormValues = {
-  username: '',
-  password: '',
-  email: '',
-  tos: false,
-}
 
 function App() {
+  const initialFormErrors = {
+    username: '',
+    password: '',
+    email: '',
+    tos: '',
+  }
+  
+  const initialFormValues = {
+    username: '',
+    password: '',
+    email: '',
+    tos: false,
+  }
+
+
+
   const [formValues, setFormValues] = useState(initialFormValues);
   const [formErrors, setFormErrors] = useState(initialFormErrors);
   const [users, setUsers] = useState([]);
+
+
+
 
   const ChangerSubmit = () => {
     axios.post('https://reqres.in/api/users', formValues)
@@ -53,13 +60,14 @@ function App() {
 
   return (
     <div className="App">
-     <Form values={formValues} 
+     <Form 
+     values={formValues} 
      change={Changer} 
      errors={formErrors} 
      submit={ChangerSubmit}
      
      />
-     {users.map(user => (
+     { users.map(user => (
       <div key={user.id}>
         <p>{user.createAt}</p>
         <p>{user.email}</p>

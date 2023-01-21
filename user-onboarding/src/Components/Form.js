@@ -1,13 +1,14 @@
 import React from 'react';
 
 const Form =(props) => {
-    const { onChange, submit, errors } = props;
+    // console.log(props.values.password)
+    const { change, submit, errors } = props;
     const { username, email, password, tos } = props.values;
 
-   onChange = (e) => {
+   const onChange = (e) => {
         const { name, value, checked, type} = e.target;
         const newVal = type === 'checkbox' ? checked : value;
-        change(name, newVal);
+         change(name, newVal);
     }
 
    const onSubmit = (e) => {
